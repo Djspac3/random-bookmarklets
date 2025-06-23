@@ -1,4 +1,20 @@
 /* this file is embeded into manager.js (why: uh its easy to edit here then in litteral string form */
+/* remember to copy this before commit into the first few lines of manager.js */
 body {
     background-color: #505050;
+    overflow: hidden;
+}
+
+div #bookmarklist {
+    background-image:repeating-linear-gradient(
+            45deg,
+            #606dbc,
+            #606dbc 10px,
+            #465298 10px,
+            #465298 20px
+        );
+    overflow-y: scroll;
+    width: calc(100%-50px);
+    height: calc(100%-25px);
+    align-self: center;
 }

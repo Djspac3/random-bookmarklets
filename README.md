@@ -1,5 +1,7 @@
-# random-bookmarklets
-just random i have no idea why ima leave this public
+# bookmarklets
+just some bookmarks i have/am making
+
+**note:**use the ones in the finished/ directory (why: im not adding releases and want it to be easy to share with my self)
 
 ## scripts
 - bootloader.js
@@ -9,7 +11,12 @@ just random i have no idea why ima leave this public
 
 ## files
 - manger.style.css
-    just the manager.js's actual formating its just so it can be easily edited without editing a giant unreadable not formated string
+    just the manager.js's actual formating its just so it can be easily edited a giant unreadable string
+    **this has to manualy be minified and copyed**
+    why: im too lazy/unknowledgeable to make a script for it
+
+- 
+
 ### the license
 i just used what one github recommended
 https://choosealicense.com/

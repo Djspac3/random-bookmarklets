@@ -1,0 +1,4 @@
+/* this file is embeded into manager.js (why: uh its easy to edit here then in litteral string form */
+body {
+    background-color: #505050;
+}

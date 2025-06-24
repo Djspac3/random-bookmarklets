@@ -12,7 +12,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        type: 'asset/source' // <-- FIXED: use 'type' not 'use'
       },
       {
         test: /\.(png|jpg|gif|svg)$/i,

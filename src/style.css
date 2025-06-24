@@ -1,5 +1,4 @@
-/* this file is embeded into manager.js (why: uh its easy to edit here then in litteral string form */
-/* remember to copy this before commit into the first few lines of manager.js */
+/* this file is embeded using webpack*/
 body {
     background-color: #505050;
     overflow: hidden;

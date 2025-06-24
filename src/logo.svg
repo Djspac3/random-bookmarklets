@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
+
+ <g class="layer" display="inline">
+  <title>Layer 1</title>
+  <line fill="none" fill-opacity="null" id="svg_2" opacity="0.5" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-opacity="null" stroke-width="5" x1="19.67" x2="19.67" y1="86.37" y2="86.37"/>
+  <path d="m5.3,5.53l88.03,-0.03l0,89.17l-44.67,0l0,-27.67l-22.33,22.17l-19.83,-19.83l0,23l-1.2,-86.8l0,-0.01z" fill="#bfbfbf" id="outline" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-opacity="null" stroke-width="5" transform="matrix(1, 0, 0, 1, 0, 0)"/>
+  <text fill="#000000" fill-opacity="null" font-family="Serif" font-size="14.82" id="name" letter-spacing="0" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-opacity="null" stroke-width="0" style="cursor: move;" text-anchor="middle" textLength="81" transform="matrix(1, 0, 0, 1, 0, 0)" x="49.51" xml:space="preserve" y="21.61">bookmarklets</text>
+  <path fill="#000000" fill-opacity="null" id="svg_19" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-opacity="null" stroke-width="0" transform="scale(1)"/>
+  <path d="m69.3,72.41l18.14,0l0,10.95l-18.14,0zm0,5.48l18.14,0l0,10.95l-18.14,0z" fill="#bfbfbf" id="svg_5" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-opacity="null" stroke-width="2"/>
+ </g>
+</svg>

@@ -3,6 +3,10 @@ just some bookmarks i have/am making
 
 **note:**use the ones in the finished/ directory (why: im not adding releases and want it to be easy to share with my self)
 
+## building
+```npx webkit```
+that will output the bookmarklet automaticly in dist
+
 ## scripts
 - bootloader.js
     it puts you on the google page used for storing the manager.js data and runs it

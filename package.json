@@ -1,0 +1,17 @@
+{
+  "name": "random-bookmarklets",
+  "version": "1.0.0",
+  "description": "just some random bookmarklets i like",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "djspac3",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1"
+  }
+}

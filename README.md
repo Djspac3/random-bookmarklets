@@ -5,7 +5,7 @@ just some bookmarks i have/am making
 
 ## building
 ```npm run build```
-that will output the bookmarklet automaticly in dist
+that will output the bookmarklet automaticly in dist  
 the javascript: prefix is not automaticly included for testing reasons
 
 ## scripts
@@ -17,7 +17,7 @@ the javascript: prefix is not automaticly included for testing reasons
 ## files
 - manger.style.css
     just the manager.js's actual formating its just so it can be easily edited a giant unreadable string
-    **this has to manualy be minified and copyed**
+    **this has to manualy be minified and copyed**  
     why: im too lazy/unknowledgeable to make a script for it
 
 - 

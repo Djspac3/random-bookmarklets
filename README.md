@@ -4,8 +4,9 @@ just some bookmarks i have/am making
 **note:**use the ones in the finished/ directory (why: im not adding releases and want it to be easy to share with my self)
 
 ## building
-```npx webkit```
+```npm run build```
 that will output the bookmarklet automaticly in dist
+the javascript: prefix is not automaticly included for testing reasons
 
 ## scripts
 - bootloader.js

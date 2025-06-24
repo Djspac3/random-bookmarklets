@@ -4,12 +4,8 @@ import logo from './logo.svg'
 export default function main() {
     alert('Bookmarklet Manager is starting up...')
     /* remove all unneeded elements from existance */
-    for (let removing of document.querySelectorAll('body *')) {
-        removing.remove()
-    }
-    for (let removing of document.querySelectorAll('head *')) {
-        removing.remove()
-    }
+    document.body.innerHTML = ''
+    document.head.innerHTML = ''
 
     /* start of real script */
     var favIcon = document.createElement('link')

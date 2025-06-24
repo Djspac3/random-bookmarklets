@@ -1,4 +1,4 @@
-import './manager.style.css'
+import './style.css'
 import logo from './logo.svg'
 
 export default function main() {

@@ -46,7 +46,29 @@ export function main() {
     const end = Math.min(start + pageSize, totalItems);
     for (let i = start; i < end; i++) {
       const li = document.createElement("li");
-      li.textContent = `Item ${i + 1}`;
+      // Create a link
+      const openBookmark = document.createElement("button");
+      openBookmark.onclick = () => {
+        const bookmarkletContents = localStorage.getItem(`bookmarklet${i}.contents`) || "javascript:alert(\"no bookmark is stored here\")";
+        const bookmarkletName = localStorage.getItem(`bookmarklet${i}.name`) || `Item ${i + 1} has no name`;
+        const newWindow = window.open(`https://google.com/bookmarlet.${bookmarkletName}`, "_blank");
+        newWindow.document.write(`<title>${bookmarkletName}</title><script>${bookmarkletContents}</script>`);
+      };
+      link.textContent = localStorage.getItem(`bookmarklet${i}.name`) || `Item ${i + 1} has no name`; // Use stored name or default
+      link.target = "_blank";
+      link.style.marginRight = "10px";
+      // Create a button
+      const btn = document.createElement("button");
+      btn.textContent = "Action";
+      btn.onclick = () => {
+        const newContents = prompt("Enter new contents for this bookmarklet: (without javascript: prefix)", localStorage.getItem(`bookmarklet${i}.contents`)? localStorage.getItem(`bookmarklet${i}.contents`).replace("javascript:", "") : "alert('Hello, World!');");
+        const newName = prompt("Enter new name for this bookmarklet:", localStorage.getItem(`bookmarklet${i}.name`) || `Bookmarklet ${i + 1}`);
+        localStorage.setItem(`bookmarklet${i}.contents`, ("javascript:" + newContents )|| "javascript:alert(\"no bookmark is stored here\")");
+        localStorage.setItem(`bookmarklet${i}.name`, newName);
+        renderPage(); // Re-render the page to reflect changes
+      };
+      li.appendChild(link);
+      li.appendChild(btn);
       listContainer.appendChild(li);
     }
     prevBtn.disabled = pageNumber === 0;

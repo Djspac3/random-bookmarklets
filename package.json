@@ -4,7 +4,6 @@
   "description": "just some random bookmarklets i like",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no tests have been added yet\" && exit 1",
     "build": "webpack"
   },
   "author": "djspac3",

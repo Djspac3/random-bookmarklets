@@ -9,6 +9,8 @@
   "author": "djspac3",
   "license": "MIT",
   "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^24.0.13",
     "css-loader": "^7.1.2",
     "style-loader": "^4.0.0",
     "webpack": "^5.99.9",

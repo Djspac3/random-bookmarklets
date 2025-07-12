@@ -8,11 +8,16 @@ just some bookmarks i have/am making
 that will output the bookmarklet automaticly in dist  
 the javascript: prefix is not automaticly included for testing reasons
 
-## scripts
-- bootloader.js
-    it puts you on the google page used for storing the manager.js data and runs it
-- manager.js
-    removes the original sites elements and loads new ones
+## files
+- dist/manager.js
+the manager script for storing loads of scripts
+  
+- dist/tools.js
+a set of a few random tools you might enjoy/need
+  
+- tests/spec.js
+a playwright test for each script (requires compiled files rn)
+
 
 ## files
 - manger.style.css

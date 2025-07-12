@@ -4,7 +4,8 @@
   "description": "just some random bookmarklets i like",
   "private": true,
   "scripts": {
-    "build": "webpack"
+    "build": "npx webpack",
+    "test": "npx playwright test"
   },
   "author": "djspac3",
   "license": "MIT",

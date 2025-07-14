@@ -19,8 +19,11 @@ export function addElements() {
   styleElement.textContent = styleSheet;
   document.head.appendChild(styleElement);
 
-  var purecss = document.createElement("style");
-  purecss.textContent = require("purecss").getFile();
+  var purecss = document.createElement("link");
+  purecss.rel = "stylesheet";
+  purecss.href = "https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css";
+  purecss.integrity = "sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls";
+  purecss.crossOrigin = "anonymous";
   document.head.appendChild(purecss);
 
   var viewportMeta = document.createElement("meta");

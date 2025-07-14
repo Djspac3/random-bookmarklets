@@ -18,6 +18,15 @@ export function addElements() {
   var styleElement = document.createElement("style");
   styleElement.textContent = styleSheet;
   document.head.appendChild(styleElement);
+
+  var purecss = document.createElement("style");
+  purecss.textContent = require("purecss").getFile();
+  document.head.appendChild(purecss);
+
+  var viewportMeta = document.createElement("meta");
+  viewportMeta.name = "viewport";
+  viewportMeta.content = "width=device-width, initial-scale=1";
+  document.head.appendChild(viewportMeta);
 }
 
 export function main() {

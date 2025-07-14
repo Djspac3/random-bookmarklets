@@ -4,7 +4,7 @@ if (!window.location.href.startsWith('https://google.com/bookmarlet.manager')) {
     console.error("bookmarklet manager: unvalid URL, redirecting to https://google.com/bookmarlet.manager aka base url");
     alert('This bookmarklet is designed to be used on https://google.com/bookmarlet.manager for page reasons. you will be redirected now. rerun this script after the redirect.');
     window.location.href = "https://google.com/bookmarlet.manager" // the main site
-    await new Promise(resolve => setTimeout(resolve, 1000)); // wait for the redirect to complete
+    await new Promise(resolve => setTimeout(resolve, 100)); // wait for the redirect to complete
 }
 console.log('removing all elements from the page');
 /* remove all unneeded elements from existance */

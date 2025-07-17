@@ -52,10 +52,25 @@ test.describe("Bookmarklets", async () => {
           });
 
           await page.waitForTimeout(1000);
-          // Check if the bootloader logs are present
+          
         });
         break;
       default:
+        test(`Bookmarklet: ${bookmarklet}, unknown script for testing, checking for errors`, async ({ page }) => {
+          await page.goto(`https://google.com/bookmarlet.${bookmarklet}`);
+          page.addScriptTag({content: bookmarkletContent.toString()});
+
+          var consoleMessages: ConsoleMessage[] = [];
+          page.on("console", (msg) => {
+            consoleMessages.push(msg);
+          });
+
+          await page.waitForTimeout(1000);
+          // Check if the bootloader logs are present
+          expect(consoleMessages.length).toBeGreaterThan(0);
+          expect(consoleMessages[0].text()).toContain("Bookmarklet loaded successfully");
+        });
+        break;
     }
   }
 });

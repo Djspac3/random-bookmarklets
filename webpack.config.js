@@ -1,27 +1,28 @@
-import { resolve } from "path";
-export const outputFolder = resolve(__dirname, "bookmarklets");
+const path = require("path");
 
-export const entry = {
-  manager: "./src/manager/bootloader.js",
-  tools: "./src/tools/bootloader.js",
-};
-export const output = {
-  filename: "[name].js",
-  path: outputFolder,
-};
-export const mode = "production";
-export const module = {
-  rules: [
-    {
-      test: /\.css$/i,
-      type: "asset/inline", // <-- FIXED: use 'type'  not 'use'
-    },
-    {
-      test: /\.(png|jpg|gif|svg)$/i,
-      type: "asset/inline",
-    },
-  ],
-};
-export const optimization = {
-  minimize: true,
+module.exports = {
+  entry: {
+    manager: "./src/manager/bootloader.js",
+    tools: "./src/tools/bootloader.js",
+  },
+  output: {
+    filename: "[name].js",
+    path: path.resolve(__dirname, "bookmarklets"),
+  },
+  mode: "production",
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        type: "asset/inline",
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/i,
+        type: "asset/inline",
+      },
+    ],
+  },
+  optimization: {
+    minimize: true,
+  },
 };

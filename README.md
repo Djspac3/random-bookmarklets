@@ -9,13 +9,13 @@ that will output the bookmarklet automaticly in dist
 the javascript: prefix is not automaticly included for testing reasons
 
 ## files
-- dist/manager.js
+- src/manager/
 the manager script for storing loads of scripts
   
-- dist/tools.js
+- src/tools/
 a set of a few random tools you might enjoy/need
   
-- tests/spec.js
+- tests/run.scripts.test.ts
 a playwright test for each script (requires compiled files rn)
 
 

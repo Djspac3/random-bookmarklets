@@ -9,7 +9,7 @@ const _prompt = window.prompt;
  * @param {string?} returnType - "string", "number", "boolean", or "any" (default is "string")
  * @returns {string|number|boolean} the input value converted to the specified return type
  */
-export function prompt(message, defaultInput, retry, returnType) {
+export function __prompt(message, defaultInput, retry, returnType) {
   if (!returnType || returnType === "any") returnType = "string"; // default to "any" aka the string type as thats default
   if (typeof retry != Boolean) retry = false;
   if (!defaultInput) defaultInput = "string";

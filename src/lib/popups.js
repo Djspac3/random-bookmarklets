@@ -21,7 +21,7 @@ export function promptHtml(width, height) {
     callback(popup);
   } else {
     alert("Popup blocked! Please allow popups for this site.");
-    throw new Error("library: promptHtml: Popup blocked");
+    throw new Error("library: promptHtml: Popup blocked/failed to open");
   }
   return popup;
 }

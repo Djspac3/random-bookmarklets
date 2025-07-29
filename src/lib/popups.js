@@ -1,7 +1,7 @@
 /**
  * @param {number?} width positive integer for popup width
  * @param {number?} height positive integer for popup height
- * @returns {WindowProxy} popup window
+ * @returns {WindowProxy?} popup window
  */
 export function promptHtml(width, height) {
   width = width || 600;

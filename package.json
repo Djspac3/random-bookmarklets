@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "build": "npx webpack",
-    "test": "npx playwright test"
+    "test": "npx playwright test",
+    "test UI": "npx playwright test --ui"
   },
   "author": "djspac3",
   "license": "MIT",

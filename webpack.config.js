@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    manager: "./src/manager/bootloader.js",
+    manager: "./src/bookmarklet-manager/bootloader.js",
     tools: "./src/tools/bootloader.js",
   },
   output: {

@@ -11,8 +11,6 @@ var option = Number(
 switch (parseFloat(option)) {
   case 1:
     const script = document.createElement("script");
-
-    // TODO: make this use either a built in copy of eruda or bypass CORS and use the CDN
     script.src = "https://cdn.jsdelivr.net/npm/eruda";
     script.onload = () => {
       eruda.init();

@@ -17,9 +17,6 @@ switch (parseFloat(option)) {
     script.onload = () => {
       eruda.init();
     };
-    script.onerror = (error) => {
-      alert(`Failed to load eruda. error: ${error || "Unknown error"}`);
-    }
     document.head.appendChild(script);
     break;
   // Add more cases for other options as needed

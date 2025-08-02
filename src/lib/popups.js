@@ -1,70 +1,3 @@
-// move the popup function to use for overwriting
-const _prompt = window.prompt;
-
-/**
- *
- * @param {string} message
- * @param {*} defaultInput
- * @param {boolean?} retry to retry if either the value is none or doesnt match return type
- * @param {string?} returnType - "string", "number", "boolean", or "any" (default is "string")
- * @returns {string|number|boolean} the input value converted to the specified return type
- */
-export function __prompt(message, defaultInput, retry, returnType) {
-  if (!returnType || returnType === "any") returnType = "string"; // default to "any" aka the string type as thats default
-  if (typeof retry != Boolean) retry = false;
-  if (!defaultInput) defaultInput = "string";
-  if (defaultInput === "any") defaultInput = "string";
-
-  if (retry) {
-    // repeat until valid input
-    let input = _prompt(message, defaultInput);
-    while (retry) {
-      input = _prompt(message, defaultInput);
-      switch (returnType) {
-        case "string":
-          if (input) retry = false;
-        case "number":
-          if (parseFloat(input) || parseFloat(input) === 0) {
-            input = parseFloat(input);
-            retry = false;
-          }
-        case "boolean":
-          if (
-            input.toLowerCase() === "true" ||
-            input.toLowerCase() === "false"
-          ) {
-            input = input === "true";
-            retry = false;
-          }
-        default:
-          throw new Error(
-            `Invalid return type: ${returnType}. Expected "string", "number", "boolean", or "any".`
-          );
-      }
-    }
-  } else {
-    // non repeat
-    var input = _prompt(message, defaultInput);
-    switch (returnType) {
-      case "string":
-        if (input) retry = false;
-      case "number":
-        if (parseFloat(input) || parseFloat(input) === 0) {
-          input = parseFloat(input);
-          retry = false;
-        }
-      case "boolean":
-        if (input.toLowerCase() === "true" || input.toLowerCase() === "false") {
-          input = input === "true";
-          retry = false;
-        }
-      default:
-        throw new Error(
-          `Invalid return type: ${returnType}. Expected "string", "number", "boolean", or "any".`
-        );
-    }
-  }
-}
 /**
  * @description Opens a popup window with the specified HTML content.
  * If the popup is blocked/failed, it alerts the user and throws an error.
@@ -75,7 +8,6 @@ export function __prompt(message, defaultInput, retry, returnType) {
 export function promptHtml(width, height) {
   width = width || 600;
   height = height || 400;
-  html = html || "<html><body>NO HTML USED</body></html>";
   var popup = open(
     "about:blank",
     "",
@@ -85,12 +17,22 @@ export function promptHtml(width, height) {
       height +
       ",resizable=yes,scrollbars=yes"
   );
-  if (popup) {
-    callback = callback || function () {};
-    callback(popup);
-  } else {
+  if (!popup) {
     alert("Popup blocked! Please allow popups for this site.");
     throw new Error("library: promptHtml: Popup blocked/failed to open");
   }
+
   return popup;
+}
+
+/**
+ * @param {string} message The message to display in the prompt.
+ * @param {number?} defaultValue The default value to pre-fill in the prompt.
+ * @returns {number} The number entered by the user, will be NaN if invalid
+ * (Nan is falsy so u can do || to it)
+ * @description Displays a prompt dialog to the user and returns the input as a number.
+ * If the user cancels, it returns NaN.
+ */
+export function promptNumber(message, defaultValue) {
+  return parseFloat(prompt(message.trim(), defaultValue || 0));
 }

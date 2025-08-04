@@ -1,4 +1,5 @@
 const path = require("path");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = {
   entry: {
@@ -26,4 +27,11 @@ module.exports = {
     minimize: true,
   },
   cache: true,
+
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: "static", // makes it output a html file with all the data!
+      reportFilename: "bundleSizes"
+    })
+  ]
 };

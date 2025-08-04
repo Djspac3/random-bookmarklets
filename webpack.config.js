@@ -25,5 +25,5 @@ module.exports = {
   optimization: {
     minimize: true,
   },
-  cache: true
+  cache: true,
 };

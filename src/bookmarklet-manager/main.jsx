@@ -1,40 +1,55 @@
-import logo from "./assets/logo.svg"; //imported as inline SVG
-import styleSheet from "./assets/style.css"; //imported as inline CSS
+import logo from "./assets/logo.svg"; // imported as inline SVG
+import styleSheet from "./assets/style.css"; // imported as inline CSS
 
-import { bookmarklet } from "./classes"; //data helper
+import { bookmarklets } from "./classes.ts"; // data helper
 
-export function addElements() {
-  var pageIcon = document.createElement("link");
-  pageIcon.rel = "icon";
-  pageIcon.type = "image/png";
-  pageIcon.href = logo;
-  document.head.appendChild(pageIcon);
-  var logoElement = document.createElement("img");
-  logoElement.src = logo;
-  logoElement.id = "logo";
-  logoElement.style.width = "100px";
-  document.body.appendChild(logoElement);
+// react
+// import { Fragment } from "react";
+import { createRoot } from "react-dom/client";
 
-  var styleElement = document.createElement("style");
-  styleElement.textContent = styleSheet;
-  document.head.appendChild(styleElement);
+var pageIcon = document.createElement("link");
+pageIcon.rel = "icon";
+pageIcon.type = "image/png";
+pageIcon.href = logo;
+document.head.appendChild(pageIcon);
+var styleElement = document.createElement("style");
+styleElement.textContent = styleSheet;
+document.head.appendChild(styleElement);
+var purecss = document.createElement("link");
+purecss.rel = "stylesheet";
+purecss.href = "https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css";
+purecss.integrity =
+  "sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls";
+purecss.crossOrigin = "anonymous";
+document.head.appendChild(purecss);
+var viewportMeta = document.createElement("meta");
+viewportMeta.name = "viewport";
+viewportMeta.content = "width=device-width, initial-scale=1";
+document.head.appendChild(viewportMeta);
 
-  var purecss = document.createElement("link");
-  purecss.rel = "stylesheet";
-  purecss.href =
-    "https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css";
-  purecss.integrity =
-    "sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls";
-  purecss.crossOrigin = "anonymous";
-  document.head.appendChild(purecss);
-
-  var viewportMeta = document.createElement("meta");
-  viewportMeta.name = "viewport";
-  viewportMeta.content = "width=device-width, initial-scale=1";
-  document.head.appendChild(viewportMeta);
+function menu() {
+  function listItem(boop) {
+    return <li key={"bookmarklet " + boop.id}>
+      <button>run {boop.name}</button>
+    </li>;
+  }
+  return (
+    <ol id="list">
+      {bookmarklets.map((boop) => {
+        listItem(boop);
+      })}
+    </ol>
+  );
 }
 
-export function main() {
+function main() {}
+var reactDiv = document.createElement("div");
+reactDiv.id = "app";
+document.body.appendChild(reactDiv);
+const REACTROOT = createRoot(reactDiv);
+REACTROOT.render(<menu />);
+
+/*export function main() {
   let pageNumber = 0;
   const pageSize = parseInt(localStorage.getItem("pageSize")) || 10; // Default to 10 if not set
   const totalItems = 50; // Example: 50 items total
@@ -124,4 +139,4 @@ export function main() {
   };
 
   renderPage();
-}
+}*/

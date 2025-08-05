@@ -3,7 +3,7 @@ const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = {
   entry: {
-    manager: "./src/bookmarklet-manager/bootloader.js",
+    manager: "./src/bookmarklet-manager/main.jsx",
     tools: "./src/tools/bootloader.js",
   },
   output: {
@@ -13,6 +13,23 @@ module.exports = {
   mode: "production",
   module: {
     rules: [
+      {
+        // compiling shit with babel
+        test: /\.(j|t)sx?$/,
+        //. then J or T then S for both then X optionaly
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            targets: "defaults",
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react",
+              "@babel/preset-typescript",
+            ],
+          },
+        },
+      },
       {
         // due to issues with timing of it getting added
         test: /\.css$/i,

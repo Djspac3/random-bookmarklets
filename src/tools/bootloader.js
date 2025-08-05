@@ -1,14 +1,12 @@
-//import { prompt } from "../lib/popups";
+import { promptNumber } from "../lib/popups";
 
-var option = Number(
-  prompt(
-    `Choose an option (type number of it):
+var option = promptNumber(
+  `Choose an option (type number of it):
     1. devtools (eruda)
     ...`,
-    "1"
-  )
+  1
 );
-switch (parseFloat(option)) {
+switch (option) {
   case 1:
     const script = document.createElement("script");
     script.src = "https://cdn.jsdelivr.net/npm/eruda";

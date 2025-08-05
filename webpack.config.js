@@ -34,6 +34,7 @@ module.exports = {
     new BundleAnalyzerPlugin({
       analyzerMode: "static", // makes it output a html file with all the data!
       reportFilename: "bundleSizes.html",
+      openAnalyzer: false
     }),
   ],
 };

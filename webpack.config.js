@@ -14,10 +14,12 @@ module.exports = {
   module: {
     rules: [
       {
+        // due to issues with timing of it getting added
         test: /\.css$/i,
         type: "asset/inline",
       },
       {
+        // images
         test: /\.(png|jpg|gif|svg)$/i,
         type: "asset/inline",
       },

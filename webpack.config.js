@@ -1,6 +1,7 @@
 const path = require("path");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
+/** @type {import('webpack').Configuration} */
 module.exports = {
   entry: {
     manager: "./src/bookmarklet-manager/main.jsx",
@@ -46,6 +47,8 @@ module.exports = {
     minimize: true,
   },
   cache: true,
+  
+  
 
   plugins: [
     new BundleAnalyzerPlugin({

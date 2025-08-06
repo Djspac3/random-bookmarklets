@@ -48,7 +48,15 @@ module.exports = {
   },
   cache: true,
   
-  
+  resolve: {
+		alias: {
+      //preact conversion to save bookmarklet size
+			react: 'preact/compat',
+			'react-dom/test-utils': 'preact/test-utils',
+			'react-dom': 'preact/compat', // Must be below test-utils
+			'react/jsx-runtime': 'preact/jsx-runtime'
+		}
+	},
 
   plugins: [
     new BundleAnalyzerPlugin({

@@ -3,9 +3,3 @@ node_modules/
 
 # Ignore build output directory
 bookmarklets/
-
-# Playwright
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/

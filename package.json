@@ -4,9 +4,7 @@
   "description": "just some random bookmarklets i like",
   "private": true,
   "scripts": {
-    "build": "npx webpack",
-    "test": "npx playwright test",
-    "test UI": "npx playwright test --ui"
+    "build": "npx webpack"
   },
   "author": "djspac3",
   "license": "MIT",
@@ -15,7 +13,6 @@
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
-    "@playwright/test": "^1.54.1",
     "@types/node": "^24.0.13",
     "babel-loader": "^10.0.0",
     "preact": "^10.27.0",

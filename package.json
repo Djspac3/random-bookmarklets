@@ -9,12 +9,8 @@
   "author": "djspac3",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.28.0",
-    "@babel/preset-env": "^7.28.0",
-    "@babel/preset-react": "^7.27.1",
-    "@babel/preset-typescript": "^7.27.1",
     "@types/node": "^24.0.13",
-    "babel-loader": "^10.0.0",
+    "esbuild-loader": "^4.3.0",
     "preact": "^10.27.0",
     "webpack": "^5.101.0",
     "webpack-bundle-analyzer": "^4.10.2",

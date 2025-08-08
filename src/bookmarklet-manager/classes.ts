@@ -26,7 +26,7 @@ export class bookmarklet {
   edit(
     name: string | undefined,
     script: string | undefined,
-    page: string | undefined
+    page: string | undefined,
   ) {
     name = name || `bookmark ${this.id} has no name`;
     script = script || 'javascript:alert("no bookmark is stored here")';

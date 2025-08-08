@@ -4,7 +4,7 @@ var option = promptNumber(
   `Choose an option (type number of it):
     1. devtools (eruda)
     ...`,
-  1
+  1,
 );
 switch (option) {
   case 1:

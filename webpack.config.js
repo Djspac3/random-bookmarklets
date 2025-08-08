@@ -1,5 +1,6 @@
 const path = require("path");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const { EsbuildPlugin } = require("esbuild-loader");
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
@@ -20,14 +21,9 @@ module.exports = {
         //. then J or T then S for both then X optionaly
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: "esbuild-loader",
           options: {
-            targets: "defaults",
-            presets: [
-              "@babel/preset-env",
-              "@babel/preset-react",
-              "@babel/preset-typescript",
-            ],
+            target: "es2015",
           },
         },
       },
@@ -45,18 +41,23 @@ module.exports = {
   },
   optimization: {
     minimize: true,
+    minimizer: [
+      new EsbuildPlugin({
+        target: "es2015",
+      }),
+    ],
   },
   cache: true,
-  
+
   resolve: {
-		alias: {
+    alias: {
       //preact conversion to save bookmarklet size
-			react: 'preact/compat',
-			'react-dom/test-utils': 'preact/test-utils',
-			'react-dom': 'preact/compat', // Must be below test-utils
-			'react/jsx-runtime': 'preact/jsx-runtime'
-		}
-	},
+      react: "preact/compat",
+      "react-dom/test-utils": "preact/test-utils",
+      "react-dom": "preact/compat", // Must be below test-utils
+      "react/jsx-runtime": "preact/jsx-runtime",
+    },
+  },
 
   plugins: [
     new BundleAnalyzerPlugin({

@@ -15,7 +15,7 @@ export function promptHtml(width, height) {
       width +
       ",height=" +
       height +
-      ",resizable=yes,scrollbars=yes"
+      ",resizable=yes,scrollbars=yes",
   );
   if (!popup) {
     alert("Popup blocked! Please allow popups for this site.");

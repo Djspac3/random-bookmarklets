@@ -29,9 +29,11 @@ document.head.appendChild(viewportMeta);
 
 function menu() {
   function listItem(boop) {
-    return <li key={"bookmarklet " + boop.id}>
-      <button>run {boop.name}</button>
-    </li>;
+    return (
+      <li key={"bookmarklet " + boop.id}>
+        <button>run {boop.name}</button>
+      </li>
+    );
   }
   return (
     <ol id="list">

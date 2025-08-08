@@ -3,9 +3,22 @@ import styleSheet from "./assets/style.css"; // imported as inline CSS
 
 import { bookmarklets } from "./classes.ts"; // data helper
 
-// react
-// import { Fragment } from "react";
-import { createRoot } from "react-dom/client";
+// preact (smaller react)
+import { render } from "preact";
+
+// remove EVERYTHING
+document.documentElement.replaceChildren(document.head, document.body);
+Array.from(document.documentElement.attributes).forEach((at) => {
+  document.documentElement.removeAttribute(at.name);
+});
+document.head.innerHTML = "";
+Array.from(document.head.attributes).forEach((at) => {
+  document.head.removeAttribute(at.name);
+});
+document.body.innerHTML = "";
+Array.from(document.body.attributes).forEach((at) => {
+  document.body.removeAttribute(at.name);
+});
 
 var pageIcon = document.createElement("link");
 pageIcon.rel = "icon";
@@ -48,8 +61,7 @@ function main() {}
 var reactDiv = document.createElement("div");
 reactDiv.id = "app";
 document.body.appendChild(reactDiv);
-const REACTROOT = createRoot(reactDiv);
-REACTROOT.render(<menu />);
+render(<main />, reactDiv);
 
 /*export function main() {
   let pageNumber = 0;

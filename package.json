@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "build": "node build.mjs build",
+    "build:watch": "node build.mjs watch",
     "format": "npx prettier . --write"
   },
   "author": "djspac3",

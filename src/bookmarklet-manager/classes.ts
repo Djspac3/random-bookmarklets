@@ -1,3 +1,7 @@
+import { storageMacro } from "../lib/storage.ts";
+
+const store = new storageMacro("google.com/bookmarlet.manager");
+
 export class bookmarklet {
   constructor(id: number) {
     if (!id) {
@@ -15,12 +19,12 @@ export class bookmarklet {
 
     this.id = id;
     this.name =
-      localStorage.getItem(`bookmarklet${id}.name`) ||
-      `bookmark ${id} has no name`;
+      store.get(`bookmarklet${id}.name`) || `bookmark ${id} has no name`;
     this.script =
-      localStorage.getItem(`bookmarklet${id}.contents`) ||
+      store.get(`bookmarklet${id}.contents`) ||
       'javascript:alert("no bookmark is stored here")';
-    this.page = localStorage.getItem(`bookmarklet${id}.pageLink`) || String(id);
+    this.page =
+      store.get(`bookmarklet${id}.pageLink`) || `google.com/bookmarklet.${id}`;
   }
 
   edit(
@@ -30,11 +34,15 @@ export class bookmarklet {
   ) {
     name = name || `bookmark ${this.id} has no name`;
     script = script || 'javascript:alert("no bookmark is stored here")';
-    page = page || String(this.id);
+    page = page || `google.com/bookmarklet.${this.id}`;
 
     this.name = name;
     this.script = script;
     this.page = page;
+
+    store.set(`bookmarklet${this.id}.name`, name);
+    store.set(`bookmarklet${this.id}.contents`, script);
+    store.set(`bookmarklet${this.id}.pageLink`, page);
   }
 
   id: number;

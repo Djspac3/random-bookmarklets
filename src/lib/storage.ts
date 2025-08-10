@@ -1,11 +1,14 @@
-import { error } from "console";
-
 /**
  * to attempt to set this value use persistanceRequest()
+ * the default value is not the actual value as due to esbuild iife () => {} format doesnt support top level await
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StorageManager/persisted)
  */
-export var persistance: boolean = await navigator.storage.persisted();
+// REMINDER: .then is used due to await not being supported in iife esbuild
+export var persistance: boolean = false;
+navigator.storage.persisted().then((value) => {
+  persistance = value;
+});
 export function persistanceRequest() {
   const persist = navigator.storage.persist();
   persist.finally(async () => {
@@ -14,28 +17,33 @@ export function persistanceRequest() {
   return persist;
 }
 
-export class storageFragment {
+export class storageMacro {
   dataUrl: string;
   _winprox: WindowProxy | null;
   _localstorage;
   _sessionstorage;
 
-  constructor(storageUrl: string) {
-    this.dataUrl = storageUrl || "google.com/404.storage";
+  constructor(storageUrl: string = "google.com/404.storage") {
+    this.dataUrl = storageUrl;
 
     this._winprox = window.open(
       this.dataUrl,
       "_blank",
       "popup=true,resizable=false,width=100,height=100,left=1000,top=1000",
     );
-    this._localstorage = this._winprox?.localStorage;
-    this._sessionstorage = this._winprox?.sessionStorage;
+    if (this._winprox) {
+      // add name for easier noticing ig?
+      this._winprox.document.title = "DATA STORAGE LIB WINDOW";
+      this._localstorage = this._winprox.localStorage;
+      this._sessionstorage = this._winprox.sessionStorage;
+      this._winprox.document.documentElement.innerHTML = "";
+    }
   }
 
   set(
     key: string,
     value: any,
-    mode: "string" | "json" | "base64",
+    mode: "string" | "json" | "base64" = "string",
     storeType: "local" | "session" = "local",
   ) {
     let store: Storage;
@@ -60,7 +68,11 @@ export class storageFragment {
     }
   }
 
-  get(key: string, storeType: "local" | "session" = "local"): string {
+  get(
+    key: string,
+    storeType: "local" | "session" = "local",
+    throwerror: boolean = false,
+  ): string | undefined {
     let store: Storage;
     if ((storeType = "local")) {
       store = this._localstorage;
@@ -69,11 +81,15 @@ export class storageFragment {
     }
 
     let raw = store.getItem(key);
-    if (!raw) {
+    if (!raw && throwerror) {
       throw new Error(
         `storageLib: unable to get key:'${key}' got null from ${(storeType = "local") ? "localstorage" : "sessionstorage"}`,
       );
     }
+    if (!raw) {
+      return undefined;
+    }
+
     //first 3
     let prefix = raw.slice(0, 2);
     if ((prefix = "str")) {
@@ -85,7 +101,7 @@ export class storageFragment {
     if ((prefix = "jso")) {
       return JSON.parse(raw);
     }
-    throw new error(
+    throw new Error(
       `storageLib: format:'${prefix}' does not have a if statement`,
     );
   }

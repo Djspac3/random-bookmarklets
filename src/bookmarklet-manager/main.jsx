@@ -57,11 +57,19 @@ function menu() {
   );
 }
 
-function main() {}
+function main() {
+  var controlls = (
+    <div id="controlls">
+      <button id="prevbutton" />
+      <button id="nextbutton" />
+    </div>
+  );
+  var list = <ol></ol>
+}
 var reactDiv = document.createElement("div");
 reactDiv.id = "app";
 document.body.appendChild(reactDiv);
-render(<main />, reactDiv);
+render(main, reactDiv);
 
 /*export function main() {
   let pageNumber = 0;

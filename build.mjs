@@ -41,6 +41,7 @@ const config = {
     ".svg": "dataurl",
   },
   format: "iife",
+  sourcemap: "external",
   plugins: [
     sassPlugin({
       type: "css-text",
@@ -69,16 +70,4 @@ if (argv[2] === "build") {
 if (argv[2] === "watch") {
   var context = await esbuild.context(config);
   context.watch();
-  var wait = true;
-  process.on("SIGINT", async () => {
-    console.log("signal interupt noticed, closing esbuild context");
-    await context.dispose();
-    console.log("esbuild context has been 'disposed' (shutdown?)");
-    wait = false;
-  });
-  setInterval(() => {
-    if (!wait) {
-      process.exit();
-    }
-  });
 }

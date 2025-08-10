@@ -2,6 +2,32 @@ import * as esbuild from "esbuild";
 import { argv } from "process";
 import { sassPlugin } from "esbuild-sass-plugin";
 
+import { basename } from "path";
+
+/**@type {import("esbuild").Plugin} */
+const logPlugin_local = {
+  name: "logPlugin-local",
+  setup(build) {
+    build.onStart(() => {
+      console.clear();
+    });
+    build.onEnd(async (result) => {
+      console.log(`build mode: ${argv[2]}`);
+      console.log();
+      if (result.errors.length === 0) {
+        console.log("Built:");
+        if (result.metafile && result.metafile.outputs) {
+          console.log(" files:");
+          for (const outputIndex in result.metafile.outputs) {
+            // removes anoying bookmarklets/ bit
+            console.log(`  - ${basename(outputIndex)}`);
+          }
+        }
+      }
+    });
+  },
+};
+
 /**@type {import('esbuild').BuildOptions} */
 const config = {
   entryPoints: ["src/bookmarklet-manager/main.jsx"],
@@ -28,6 +54,7 @@ const config = {
         ).code;
       },
     }),
+    logPlugin_local,
   ],
 };
 

@@ -1,5 +1,5 @@
 import logo from "./assets/logo.svg"; // imported as inline SVG
-import styleSheet from "./assets/style.css"; // imported as inline CSS
+import styleSheet from "./assets/style.scss"; // imported as inline CSS
 
 import { bookmarklets } from "./classes.ts"; // data helper
 

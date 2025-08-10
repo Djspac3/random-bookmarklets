@@ -1,5 +1,6 @@
 import * as esbuild from "esbuild";
 import { argv } from "process";
+import { sassPlugin } from "esbuild-sass-plugin";
 
 /**@type {import('esbuild').BuildOptions} */
 const config = {
@@ -14,9 +15,21 @@ const config = {
     ".svg": "dataurl",
   },
   format: "iife",
+  plugins: [
+    sassPlugin({
+      type: "css-text",
+      // minify using default esbuild
+      async transform(css) {
+        return (
+          await esbuild.transform(css, {
+            loader: "css",
+            minify: true,
+          })
+        ).code;
+      },
+    }),
+  ],
 };
-
-console.log(argv[2]);
 
 if (argv[2] === "build") {
   esbuild

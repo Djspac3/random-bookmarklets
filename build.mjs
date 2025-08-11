@@ -31,12 +31,16 @@ const logPlugin_local = {
 
 /**@type {import('esbuild').BuildOptions} */
 const config = {
-  entryPoints: ["src/bookmarklet-manager/main.jsx"],
+  entryPoints: [
+    { in: "src/bookmarklet-manager/main.jsx", out: "manager" },
+    { in: "src/tools/main.js", out: "tools" },
+  ],
+  outdir: "bookmarklets",
+  entryNames: "[name]",
   bundle: true,
   minify: true,
   jsxImportSource: "preact",
   jsx: "automatic",
-  outfile: "bookmarklets/manager.js", // Output file
   // loaders
   loader: {
     ".svg": "dataurl",

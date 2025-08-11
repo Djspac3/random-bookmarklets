@@ -34,25 +34,25 @@ body {
   line-height: 1.5;
 }
 
+$button-color: #606dbc;
 .controls {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin: 10px 0;
-}
 
-.controls button {
-  background: #606dbc;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 6px 16px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.controls button:disabled {
-  background: #888;
-  cursor: not-allowed;
+  button {
+    background: $button-color;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 16px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  button:disabled {
+    background: color-mix(in srgb, $button-color, #000000 50%);
+    cursor: not-allowed;
+  }
 }

@@ -10,12 +10,13 @@ const logPlugin_local = {
   setup(build) {
     build.onStart(() => {
       console.clear();
+      console.log("building ...");
     });
     build.onEnd(async (result) => {
-      console.log(`build mode: ${argv[2]}`);
-      console.log();
       if (result.errors.length === 0) {
-        console.log("Built:");
+        console.clear();
+        console.log("building finished");
+        console.log();
         if (result.metafile && result.metafile.outputs) {
           console.log(" files:");
           for (const outputIndex in result.metafile.outputs) {
@@ -41,7 +42,7 @@ const config = {
     ".svg": "dataurl",
   },
   format: "iife",
-  sourcemap: "external",
+  metafile: true,
   plugins: [
     sassPlugin({
       type: "css-text",
@@ -59,15 +60,39 @@ const config = {
   ],
 };
 
+// clear console to remove anoying vscode messages and to leave only room for errors
+console.clear();
+
+var context = await esbuild.context(config);
+// build mode
 if (argv[2] === "build") {
-  esbuild
-    .build(config)
-    .then(() => {
-      console.log("Bookmarklet bundled successfully!");
-    })
-    .catch(() => process.exit(1));
+  context.rebuild();
+  context.dispose();
+  process.exit(0);
 }
+if (argv[2] === "manual") {
+  //prevent exit
+  process.on("beforeExit", () => {
+    setTimeout(() => {}, 1000);
+  });
+}
+// watch mode
 if (argv[2] === "watch") {
-  var context = await esbuild.context(config);
   context.watch();
 }
+
+// keybinds because its just hard
+import { emitKeypressEvents } from "readline";
+emitKeypressEvents(process.stdin);
+process.stdin.on("keypress", async (_, key) => {
+  if (key) {
+    if ((key.ctrl && key.name === "c") || key.name === "q") {
+      console.log("ctrl+c/q noticed, quiting");
+      context.dispose();
+      process.exit();
+    } else if (key.name === "r") {
+      await context.rebuild();
+    }
+  }
+});
+process.stdin.setRawMode(true);
